@@ -1,37 +1,31 @@
-import React ,{ Component} from 'react';
+import React  from 'react';
 import { Card , CardImg,CardText , CardBody ,CardTitle} from 'reactstrap';
-class Dishdetail extends Component{
-
-  renderSelectedDish(dish)
-  {
-    console.log("Rendered Selected Dish");
-    if(dish!=null)
-       return(
-         <div className="row">
-           <div className="col-12 col-md-5 m-1">
-              <Card key={dish.id}>
-                    <CardImg top src={dish.image} alt={dish.name} />
-                   <CardBody>
-                       <CardTitle>{dish.name}</CardTitle>
-                       <CardText>{dish.description}</CardText>
-                 </CardBody>
-             </Card>
+function  RenderSelectedDish({dish})
+  { if(dish!=null)
+    return(
+        <div className="row">
+             <div className="col-12 col-md-5 m-1">
+                <Card key={dish.id}>
+                      <CardImg top src={dish.image} alt={dish.name} />
+                     <CardBody>
+                         <CardTitle>{dish.name}</CardTitle>
+                         <CardText>{dish.description}</CardText>
+                   </CardBody>
+               </Card>
+          </div>
         </div>
-      </div>
-    );
-    else
-      return(
-        <div></div>
       );
-   }
-   renderComments(comments)
+      else
+        return(
+          <div></div>
+        );
+  }
+
+  function  RenderComments({comments})
    {
-      console.log("Rendered comments");
-      if(comments==null){
-          return (
-            <div></div>
-          );
-     }
+      if(comments==null)
+          return (<div></div>);
+
      const com=comments.map((comment) =>{
           return (
             <li key={comments.id}>
@@ -44,7 +38,7 @@ class Dishdetail extends Component{
      });
 
      return(
-       <div className="col-12 col-md-5 m-1">
+       <div className="col-6 col-md-5 m-1">
          <h4> Comments</h4>
          <ul className='list-unstyled'>
             {com}
@@ -52,10 +46,10 @@ class Dishdetail extends Component{
 
        </div>
         )
-       }
-       render()
+}
+       const DishDetail = (props) =>
        {
-         const dish=this.props.selectedDish;
+         const dish=props.selectedDish;
          if(dish==null){
             return(<div></div>);
           }
@@ -64,13 +58,13 @@ class Dishdetail extends Component{
           return(
             <div className="container">
             <div className="row">
-               {this.renderSelectedDish(dish)}
-               {this.renderComments(dish.comments)}
+               <RenderSelectedDish dish={props.dish}/>
+               <RenderComments comments={props.dish.comments} />
             </div>
             </div>
           );
         }
        }
 
-}
-export default Dishdetail;
+
+export default DishDetail;
