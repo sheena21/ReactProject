@@ -23,12 +23,12 @@ function  RenderSelectedDish({dish})
 
   function  RenderComments({comments})
    {
-      if(comments==null)
+      if(comments==null){
           return (<div></div>);
-
+        }
      const com=comments.map((comment) =>{
           return (
-            <li key={comments.id}>
+            <li key={comment.id}>
               <p>{comment.comment}</p>
               <p>--{comment.author},
               {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
@@ -49,17 +49,17 @@ function  RenderSelectedDish({dish})
 }
        const DishDetail = (props) =>
        {
-         const dish=props.selectedDish;
-         if(dish==null){
+         const selectedDish=props.selectedDish;
+         if(selectedDish==null){
             return(<div></div>);
           }
 
-        else {
+      else {
           return(
             <div className="container">
             <div className="row">
-               <RenderSelectedDish dish={props.dish}/>
-               <RenderComments comments={props.dish.comments} />
+               <RenderSelectedDish dish={props.selectedDish}/>
+               <RenderComments comments={props.selectedDish.comments} />
             </div>
             </div>
           );
