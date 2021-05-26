@@ -1,5 +1,4 @@
 import React , { Component } from 'react';
-
 import { Navbar ,Nav, NavbarToggler,Collapse, NavbarBrand,NavItem ,Jumbotron } from 'reactstrap';
 import {NavLink} from 'react-router-dom';
 class Header extends Component{
@@ -24,13 +23,13 @@ class Header extends Component{
          <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
            <NavbarBrand className="mr-auto" href="/">
-            <img src="assets/images/logo.png" height="30" width="41" alt="Image" />
+            <img src="assets/images/logo.png" height="30" width="41" alt="Restaurant" />
            </NavbarBrand>
            <Collapse isOpen={this.state.isNavOpen } navbar>
            <Nav navbar>
              <NavItem>
                <NavLink className="nav-link" to="/home" >
-                 <span className="fa fa-home fa-lg"></span> Home
+                 <span className="fa fa-home fa-lg"></span>  Home
                </NavLink>
              </NavItem>
              <NavItem>
